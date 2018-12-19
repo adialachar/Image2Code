@@ -1,9 +1,13 @@
+import io
+
 import os
 from flask import Flask, render_template, jsonify, request, redirect, url_for, flash, send_from_directory
 from flask import request
 import requests
 from werkzeug.utils import secure_filename
+import text_detection as td
 
+#from key import key
 UPLOAD_FOLDER = 'static/images'
 ALLOWED_EXTENSIONS = set(['png', 'jpg'])
 
@@ -27,6 +31,8 @@ def allowed_file(filename):
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
+    path = "/home/adialachar/Image2Code/static/images" + "/48362857_2323130671248213_7561461521436377088_n.jpg" 
+    td.detect_text(path)
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 

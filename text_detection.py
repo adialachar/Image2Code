@@ -1,3 +1,5 @@
+import io
+
 def detect_text(path):
     """Detects text in the file."""
     from google.cloud import vision
